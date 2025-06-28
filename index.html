@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pandas DataFrame Functions with Examples</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; color: #333; }
+    h1 { color: #2c3e50; }
+    h2 { color: #34495e; margin-top: 30px; }
+    pre { background: #eef; padding: 10px; border-left: 4px solid #5dade2; overflow-x: auto; }
+    code { font-family: Consolas, monospace; }
+  </style>
+</head>
+<body>
+
+  <h1>Pandas DataFrame Functions – Explanations & Examples</h1>
+
+  <p>This page contains the most commonly used functions and commands in <code>pandas</code> for working with DataFrames. Each function includes an explanation and a working example.</p>
+
+  <h2>1. Importing pandas</h2>
+  <pre><code>import pandas as pd</code></pre>
+
+  <h2>2. Creating a DataFrame</h2>
+  <p><strong>Explanation:</strong> Create a DataFrame from a dictionary or list.</p>
+  <pre><code>data = {'Name': ['Alice', 'Bob'], 'Age': [25, 30]}
+df = pd.DataFrame(data)
+print(df)</code></pre>
+
+  <h2>3. df.head(n)</h2>
+  <p><strong>Explanation:</strong> Returns the first <code>n</code> rows. Default is 5.</p>
+  <pre><code>df.head()</code></pre>
+
+  <h2>4. df.tail(n)</h2>
+  <p><strong>Explanation:</strong> Returns the last <code>n</code> rows.</p>
+  <pre><code>df.tail()</code></pre>
+
+  <h2>5. df.info()</h2>
+  <p><strong>Explanation:</strong> Displays summary including data types, non-null values.</p>
+  <pre><code>df.info()</code></pre>
+
+  <h2>6. df.describe()</h2>
+  <p><strong>Explanation:</strong> Generates summary statistics for numerical columns.</p>
+  <pre><code>df.describe()</code></pre>
+
+  <h2>7. df.columns</h2>
+  <p><strong>Explanation:</strong> Lists all column names.</p>
+  <pre><code>print(df.columns)</code></pre>
+
+  <h2>8. df.shape</h2>
+  <p><strong>Explanation:</strong> Returns the dimensions (rows, columns).</p>
+  <pre><code>print(df.shape)</code></pre>
+
+  <h2>9. df.dtypes</h2>
+  <p><strong>Explanation:</strong> Shows data type of each column.</p>
+  <pre><code>print(df.dtypes)</code></pre>
+
+  <h2>10. df['column'] or df.column</h2>
+  <p><strong>Explanation:</strong> Access a column.</p>
+  <pre><code>print(df['Name'])
+print(df.Name)</code></pre>
+
+  <h2>11. df.loc[row_label]</h2>
+  <p><strong>Explanation:</strong> Access rows and columns by label.</p>
+  <pre><code>df.loc[0]  # First row</code></pre>
+
+  <h2>12. df.iloc[row_index]</h2>
+  <p><strong>Explanation:</strong> Access rows and columns by index.</p>
+  <pre><code>df.iloc[1]  # Second row</code></pre>
+
+  <h2>13. df.set_index('column')</h2>
+  <p><strong>Explanation:</strong> Set a column as the row index.</p>
+  <pre><code>df.set_index('Name')</code></pre>
+
+  <h2>14. df.reset_index()</h2>
+  <p><strong>Explanation:</strong> Reset index to default integer index.</p>
+  <pre><code>df.reset_index()</code></pre>
+
+  <h2>15. df.sort_values(by='column')</h2>
+  <p><strong>Explanation:</strong> Sort DataFrame by a specific column.</p>
+  <pre><code>df.sort_values(by='Age')</code></pre>
+
+  <h2>16. df.isnull()</h2>
+  <p><strong>Explanation:</strong> Returns DataFrame showing <code>True</code> for null values.</p>
+  <pre><code>df.isnull()</code></pre>
+
+  <h2>17. df.dropna()</h2>
+  <p><strong>Explanation:</strong> Removes rows with missing values.</p>
+  <pre><code>df.dropna()</code></pre>
+
+  <h2>18. df.fillna(value)</h2>
+  <p><strong>Explanation:</strong> Fill missing values with a specified value.</p>
+  <pre><code>df.fillna(0)</code></pre>
+
+  <h2>19. df.drop('column', axis=1)</h2>
+  <p><strong>Explanation:</strong> Drop a column from the DataFrame.</p>
+  <pre><code>df.drop('Age', axis=1)</code></pre>
+
+  <h2>20. df.apply(function)</h2>
+  <p><strong>Explanation:</strong> Apply a function to each column or row.</p>
+  <pre><code>df['Age'].apply(lambda x: x + 1)</code></pre>
+
+  <h2>21. df.groupby('column')</h2>
+  <p><strong>Explanation:</strong> Group data based on a column.</p>
+  <pre><code>df.groupby('Name').mean()</code></pre>
+
+  <h2>22. df.merge(df2, on='column')</h2>
+  <p><strong>Explanation:</strong> Merge two DataFrames on a common column.</p>
+  <pre><code>pd.merge(df1, df2, on='ID')</code></pre>
+
+  <h2>23. pd.concat([df1, df2])</h2>
+  <p><strong>Explanation:</strong> Concatenate two DataFrames.</p>
+  <pre><code>pd.concat([df1, df2])</code></pre>
+
+  <h2>24. df.to_csv('file.csv')</h2>
+  <p><strong>Explanation:</strong> Save DataFrame to a CSV file.</p>
+  <pre><code>df.to_csv('data.csv', index=False)</code></pre>
+
+  <h2>25. pd.read_csv('file.csv')</h2>
+  <p><strong>Explanation:</strong> Load a CSV file into a DataFrame.</p>
+  <pre><code>df = pd.read_csv('data.csv')</code></pre>
+
+  <h2>26. df.value_counts()</h2>
+  <p><strong>Explanation:</strong> Count unique values in a Series.</p>
+  <pre><code>df['Name'].value_counts()</code></pre>
+
+  <h2>27. df.duplicated()</h2>
+  <p><strong>Explanation:</strong> Detect duplicate rows.</p>
+  <pre><code>df.duplicated()</code></pre>
+
+  <h2>28. df.drop_duplicates()</h2>
+  <p><strong>Explanation:</strong> Remove duplicate rows.</p>
+  <pre><code>df.drop_duplicates()</code></pre>
+
+  <h2>29. df.rename(columns={'old': 'new'})</h2>
+  <p><strong>Explanation:</strong> Rename column names.</p>
+  <pre><code>df.rename(columns={'Name': 'Full Name'})</code></pre>
+
+  <h2>30. df.query("condition")</h2>
+  <p><strong>Explanation:</strong> Query DataFrame using a string expression.</p>
+  <pre><code>df.query("Age > 25")</code></pre>
+
+  <hr>
+  <p><strong>Note:</strong> This is not an exhaustive list, but it covers the most commonly used functions for working with <code>pandas</code> DataFrames.</p>
+
+</body>
+</html>
